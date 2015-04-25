@@ -1,31 +1,9 @@
-<?php
-function getFileList($dir) {
-	$files = glob(rtrim($dir, '/') . '/*');
-	$list = array();
-	foreach ($files as $file) {
-		if (is_file($file)) {
-			$list[] = $file;
-		}
-		if (is_dir($file)) {
-			$list = array_merge($list, getFileList($file));
-		}
-	}
-
-	return $list;
-}
-
-$title = "Debussy";
-$list = <<<EOM
-	{file:'data/Debussy-Girl-with-Flaxen-Hair.mp3',name:'Girl with Flaxen Hair'},
-	{file:'data/Debussy-Menuet.mp3',name:'Menuet'},
-EOM
-?>
 <html lang="ja">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"＞ 
-		<meta name="application-name" content="<?=$title?>">
-		<title><?=$title?></title>
+		<meta name="application-name" content="Debussy">
+		<title>Debussy</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
 
 		<!-- Bootstrap -->
@@ -82,13 +60,14 @@ body {
 	</head>
 
 	<body>
-		<h2 id="title" class="text-center"><?=$title?>
+		<h2 id="title" class="text-center">Debussy
 			<small>0.1</small>
 		</h2>
 
 		<script>
 var musicList = [
-<?=$list?>
+	{file:'data/Debussy-Girl-with-Flaxen-Hair.mp3',name:'Girl with Flaxen Hair'},
+	{file:'data/Debussy-Menuet.mp3',name:'Menuet'},
 ]
 
 document.write('<ul id="music-wrap" class="list-group">');
@@ -154,7 +133,7 @@ $(function(){
 $(function(){
 	$("#stop-button").click(function(){
 		// 停止
-		$("#ticker-text p").text('Please Play "<?=$title?>"');
+		$("#ticker-text p").text('Please Play "Debussy"');
 		$("#ticker-text p").css("color","#777");
 		$('#music-wrap .music-list:nth-child(' + ffCount + ')').css("background-color","#ddd");
 		$("#aplay").get(0).pause();
@@ -189,7 +168,7 @@ $(function(){
 	</script>
 
 		<div id="ticker-text">
-			<p>Please Play "<?=$title?>"</p>
+			<p>Please Play "Debussy"</p>
 		</div>
 		<div class="btn-group btn-group-justified">
 		<div class="btn-group">
